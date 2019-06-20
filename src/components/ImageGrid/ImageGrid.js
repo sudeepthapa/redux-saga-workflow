@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-
+import { loadImages } from '../actions';
 import './styles.css';
-import {connect } from 'react-redux'
+import { connect } from 'react-redux';
 
 const key = '5f96323678d05ff0c4eb264ef184556868e303b32a2db88ecbf15746e6f25e02';
 
@@ -39,15 +39,23 @@ class ImageGrid extends Component {
                         </div>
                     ))}
                 </section>
+                <button onClick={this.props.loadImages}>Load more ...</button>
             </div>
         );
     }
 }
 
-const mapStateToProps = ({isLoading, images, error}) =>({
+const mapStateToProps = ({ isLoading, images, error }) => ({
     isLoading,
     images,
-    error
-})
+    error,
+});
 
-export default connect(mapStateToProps)(ImageGrid);
+const mapDispatchToProps = dispatch => ({
+    loadImages: () => dispatch(loadImages()),
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(ImageGrid);
