@@ -1,10 +1,10 @@
-import {IMAGES} from '../constants';
+import { IMAGES } from '../constants';
 
-const imagesReducer = (state=[], action)=>{
-    if(action.type ===IMAGES.LOAD_SUCCESS){
-        return [...state, ...action.images]
+const imagesReducer = (state = [], action) => {
+    if (action.type === IMAGES.LOAD_SUCCESS) {
+        return [...state, ...action.images];
     }
-    return state
-}
+    return state;
+};
 
-export default imagesReducer
+export default imagesReducer;
